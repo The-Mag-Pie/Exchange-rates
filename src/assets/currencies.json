@@ -1,0 +1,66 @@
+[
+    {
+        "code": "EUR",
+        "name": "Euro"
+    },
+    {
+        "code": "USD",
+        "name": "Dolar amerykański"
+    },
+    {
+        "code": "AUD",
+        "name": "Dolar australijski"
+    },
+    {
+        "code": "CAD",
+        "name": "Dolar kanadyjski"
+    },
+    {
+        "code": "CHF",
+        "name": "Frank szwajcarski"
+    },
+    {
+        "code": "GBP",
+        "name": "Funt szterling"
+    },
+    {
+        "code": "NOK",
+        "name": "Korona norweska"
+    },
+    {
+        "code": "CZK",
+        "name": "Korona czeska"
+    },
+    {
+        "code": "JPY",
+        "name": "Jen japoński"
+    },
+    {
+        "code": "DKK",
+        "name": "Korona duńska"
+    },
+    {
+        "code": "SEK",
+        "name": "Korona szwedzka"
+    },
+    {
+        "code": "CNY",
+        "name": "Juan chiński"
+    },
+    {
+        "code": "UAH",
+        "name": "Hrywna ukraińska"
+    },
+    {
+        "code": "RUB",
+        "name": "Rubel rosyjski"
+    },
+    {
+        "code": "BYN",
+        "name": "Rubel białoruski"
+    },
+    {
+        "code": "INR",
+        "name": "Rupia indyjska"
+    }
+]
