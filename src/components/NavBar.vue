@@ -1,6 +1,22 @@
 <script setup lang="ts">
+import { onMounted, ref, watch } from "vue"
 import { RouterLink } from "vue-router"
 import currencies from "@/assets/currencies.json"
+
+const html = document.documentElement
+const darkModeEnabled = html.getAttribute("data-bs-theme") == "dark" ? ref(true) : ref(false)
+
+watch(darkModeEnabled, (value) => {
+    if (value) {
+        html.setAttribute("data-bs-theme", "dark")
+    } else {
+        html.setAttribute("data-bs-theme", "light")
+    }
+})
+
+onMounted(() => {
+    darkModeEnabled.value = window.matchMedia("(prefers-color-scheme: dark)").matches
+})
 </script>
 
 <template>
@@ -15,8 +31,8 @@ import currencies from "@/assets/currencies.json"
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Waluty</a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <RouterLink v-for="{ code, name } in currencies" :key="code" :to="`/currency/${code}`" class="dropdown-item" active-class="active">{{ name }}</RouterLink>
+                            <li v-for="{ code, name } in currencies" :key="code">
+                                <RouterLink :to="`/currency/${code}`" class="dropdown-item" active-class="active">{{ name }}</RouterLink>
                             </li>
                         </ul>
                     </li>
@@ -24,6 +40,10 @@ import currencies from "@/assets/currencies.json"
                         <RouterLink to="/converter" class="nav-link" active-class="active">Przelicznik walut</RouterLink>
                     </li>
                 </ul>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="darkModeSwitch" v-model="darkModeEnabled" />
+                    <label class="form-check-label" for="darkModeSwitch">Tryb ciemny</label>
+                </div>
             </div>
         </div>
     </nav>
