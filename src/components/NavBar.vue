@@ -1,21 +1,32 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue"
+import { ref, watch } from "vue"
 import { RouterLink } from "vue-router"
 import currencies from "@/assets/currencies.json"
 
 const html = document.documentElement
+const appTheme = localStorage.getItem("appTheme")
+
+const setTheme = (theme: string) => {
+    html.setAttribute("data-bs-theme", theme)
+    localStorage.setItem("appTheme", theme)
+}
+
+if (appTheme) {
+    setTheme(appTheme)
+} else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    setTheme("dark")
+} else {
+    setTheme("light")
+}
+
 const darkModeEnabled = html.getAttribute("data-bs-theme") == "dark" ? ref(true) : ref(false)
 
 watch(darkModeEnabled, (value) => {
     if (value) {
-        html.setAttribute("data-bs-theme", "dark")
+        setTheme("dark")
     } else {
-        html.setAttribute("data-bs-theme", "light")
+        setTheme("light")
     }
-})
-
-onMounted(() => {
-    darkModeEnabled.value = window.matchMedia("(prefers-color-scheme: dark)").matches
 })
 </script>
 
