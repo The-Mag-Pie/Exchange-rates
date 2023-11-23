@@ -26,7 +26,7 @@ const lastVisitedCurrencies = lastVisited.map((code) => currencies.find((currenc
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="({ code, name }, index) in lastVisitedCurrencies" :key="code" @click="$event => rowClicked(code)">
+                <tr v-for="({ code, name }, index) in lastVisitedCurrencies" :key="code" @click="($event) => rowClicked(code)">
                     <th scope="row">{{ index + 1 }}</th>
                     <td>{{ name }}</td>
                     <td>{{ code }}</td>
