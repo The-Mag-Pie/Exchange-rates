@@ -5,7 +5,7 @@ import image from "@/assets/images/currency-image.jpg"
 <template>
     <div class="content">
         <div class="img">
-            <img :src="image" height="250"/>
+            <img :src="image" height="250" />
         </div>
         <h3 class="text-center">Witaj na stronie z kursami walut!</h3>
         <p>Znajdziesz tutaj aktualne oraz historyczne kursy wielu walut, w tym ceny średnie oraz ceny kupna i sprzedaży. Dane pobierane są na bieżąco z zasobów Narodowego Banku Polskiego.</p>

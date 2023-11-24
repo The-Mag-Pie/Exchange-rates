@@ -3,7 +3,7 @@ import { useRouter } from "vue-router"
 import axios from "axios"
 import currencies from "@/assets/currencies.json"
 import apiUrls from "@/assets/apiUrls.json"
-import { onMounted, ref } from "vue";
+import { onMounted, ref } from "vue"
 import Loader from "@/components/SpinnerLoader.vue"
 
 interface Currency {
@@ -29,14 +29,14 @@ onMounted(async () => {
     isLoading.value = true
     for (const currency of lastVisitedCurrencies) {
         try {
-            let response = await axios.get(apiUrls.latestRateA.replace("{code}",currency.code))
+            let response = await axios.get(apiUrls.latestRateA.replace("{code}", currency.code))
             currency.mid = response.data.rates[0].mid
         } catch (err) {
             console.log(err)
         }
 
         try {
-            let response = await axios.get(apiUrls.latestRateC.replace("{code}",currency.code))
+            let response = await axios.get(apiUrls.latestRateC.replace("{code}", currency.code))
             currency.bid = response.data.rates[0].bid
             currency.ask = response.data.rates[0].ask
         } catch (err) {

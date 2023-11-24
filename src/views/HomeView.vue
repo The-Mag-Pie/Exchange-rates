@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LastVisitedCurrencies from "@/components/LastVisitedCurrencies.vue";
+import LastVisitedCurrencies from "@/components/LastVisitedCurrencies.vue"
 import TheWelcome from "@/components/TheWelcome.vue"
 
 document.title = "Kursy walut"
