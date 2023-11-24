@@ -1,0 +1,4 @@
+{
+    "latestRateA": "https://api.nbp.pl/api/exchangerates/rates/a/{code}?format=json",
+    "latestRateC": "https://api.nbp.pl/api/exchangerates/rates/c/{code}?format=json"
+}

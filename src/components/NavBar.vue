@@ -59,3 +59,10 @@ watch(darkModeEnabled, (value) => {
         </div>
     </nav>
 </template>
+
+<style scoped>
+.navbar {
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+</style>
