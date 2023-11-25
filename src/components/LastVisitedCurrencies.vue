@@ -65,7 +65,7 @@ onMounted(async () => {
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="({ code, name, mid, bid, ask }, index) in lastVisitedCurrencies" :key="code" @click="($event) => rowClicked(code)">
+                <tr v-for="({ code, name, mid, bid, ask }, index) in lastVisitedCurrencies" :key="code" @click="rowClicked(code)">
                     <th scope="row">{{ index + 1 }}</th>
                     <td>{{ name }}</td>
                     <td>{{ code }}</td>
