@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { ref, watch } from "vue"
 import { RouterLink } from "vue-router"
-import currencies from "@/assets/currencies.json"
+import currenciesJson from "@/assets/currencies.json"
+import type Currency from "@/types/Currency";
+
+const currencies = currenciesJson as Currency[]
 
 const html = document.documentElement
 const appTheme = localStorage.getItem("appTheme")

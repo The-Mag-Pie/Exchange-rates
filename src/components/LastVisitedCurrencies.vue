@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router"
 import axios from "axios"
-import currencies from "@/assets/currencies.json"
+import currenciesJson from "@/assets/currencies.json"
 import apiUrls from "@/assets/apiUrls.json"
 import { onMounted, ref } from "vue"
 import Loader from "@/components/SpinnerLoader.vue"
+import type Currency from "@/types/Currency"
 
-interface Currency {
-    code: string
-    name: string
+const currencies = currenciesJson as Currency[]
+
+interface CurrencyRow extends Currency {
     mid?: number
     bid?: number
     ask?: number
@@ -23,7 +24,7 @@ const rowClicked = (code: string) => {
 const isLoading = ref(true)
 
 const lastVisited = JSON.parse(localStorage.getItem("lastVisited") ?? "[]") as Array<string>
-const lastVisitedCurrencies = lastVisited.map((code) => currencies.find((currency) => currency.code === code) ?? { code: "XXX", name: "Nieznana waluta" }).slice(0, 5) as Currency[]
+const lastVisitedCurrencies = lastVisited.map((code) => currencies.find((currency) => currency.code === code) ?? { code: "XXX", name: "Nieznana waluta" }).slice(0, 5) as CurrencyRow[]
 
 onMounted(async () => {
     isLoading.value = true
