@@ -75,10 +75,10 @@ watch(() => route.params.code, async () => {
 </script>
 
 <template>
-    <h1>{{ currency.name }}</h1>
+    <h1>{{ currency.name }} ({{ currency.code }})</h1>
     <form onsubmit="return false" @submit="updateRates" class="d-flex lastCountContainer">
         <label for="lastCount" class="form-label">Pokaż ostatnie</label>
-        <input type="number" class="form-control" id="lastCount" min="0" max="255" step="1" v-model="lastCount">
+        <input type="number" class="form-control" id="lastCount" min="1" max="255" step="1" v-model="lastCount" required>
         <label for="lastCount" class="form-label">dni</label>
         <button class="btn btn-outline-info btn-sm" type="submit">Zapisz</button>
     </form>
