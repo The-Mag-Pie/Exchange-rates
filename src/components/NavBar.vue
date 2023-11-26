@@ -34,7 +34,7 @@ watch(darkModeEnabled, (value) => {
 </script>
 
 <template>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand bg-body-tertiary">
         <div class="container-fluid">
             <RouterLink to="/" class="navbar-brand">Kursy walut</RouterLink>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
