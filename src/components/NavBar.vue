@@ -2,7 +2,7 @@
 import { ref, watch } from "vue"
 import { RouterLink } from "vue-router"
 import currenciesJson from "@/assets/currencies.json"
-import type Currency from "@/types/Currency";
+import type Currency from "@/types/Currency"
 
 const currencies = currenciesJson as Currency[]
 

@@ -20,16 +20,14 @@ const ratesA = ref([] as Rate[])
 const ratesC = ref([] as Rate[])
 
 const updateCurrency = () => {
-    currency.value = currencies.find((currency) => currency.code === route.params.code) ?? { code: "XXX", name: "Nieznana waluta" } as Currency
+    currency.value = currencies.find((currency) => currency.code === route.params.code) ?? ({ code: "XXX", name: "Nieznana waluta" } as Currency)
     document.title = `Kurs ${currency.value.name} - Kursy walut`
 }
 
 const updateRates = async () => {
     isLoading.value = true
     try {
-        let response = await axios.get(apiUrls.lastRatesA
-            .replace("{code}", currency.value.code)
-            .replace("{count}", lastCount.value.toString()))
+        let response = await axios.get(apiUrls.lastRatesA.replace("{code}", currency.value.code).replace("{count}", lastCount.value.toString()))
         ratesA.value = response.data.rates
     } catch (err) {
         console.log(err)
@@ -37,9 +35,7 @@ const updateRates = async () => {
     }
 
     try {
-        let response = await axios.get(apiUrls.lastRatesC
-            .replace("{code}", currency.value.code)
-            .replace("{count}", lastCount.value.toString()))
+        let response = await axios.get(apiUrls.lastRatesC.replace("{code}", currency.value.code).replace("{count}", lastCount.value.toString()))
         ratesC.value = response.data.rates
     } catch (err) {
         console.log(err)
@@ -67,18 +63,21 @@ onMounted(async () => {
     await updateRates()
 })
 
-watch(() => route.params.code, async () => {
-    updateCurrency()
-    storeLastVisitedCurrency()
-    await updateRates()
-})
+watch(
+    () => route.params.code,
+    async () => {
+        updateCurrency()
+        storeLastVisitedCurrency()
+        await updateRates()
+    }
+)
 </script>
 
 <template>
     <h1>{{ currency.name }} ({{ currency.code }})</h1>
     <form onsubmit="return false" @submit="updateRates" class="d-flex lastCountContainer">
         <label for="lastCount" class="form-label">Pokaż ostatnie</label>
-        <input type="number" class="form-control" id="lastCount" min="1" max="255" step="1" v-model="lastCount" required>
+        <input type="number" class="form-control" id="lastCount" min="1" max="255" step="1" v-model="lastCount" required />
         <label for="lastCount" class="form-label">dni</label>
         <button class="btn btn-outline-info btn-sm" type="submit">Zapisz</button>
     </form>

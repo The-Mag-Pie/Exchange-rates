@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import type ChartData from '@/types/ChartData';
-import type Rate from '@/types/Rate';
-import { ref } from 'vue';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend } from 'chart.js';
-import { Line } from 'vue-chartjs';
+import type ChartData from "@/types/ChartData"
+import type Rate from "@/types/Rate"
+import { ref } from "vue"
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend } from "chart.js"
+import { Line } from "vue-chartjs"
 
 const props = defineProps<{
-    rates: Rate[],
+    rates: Rate[]
     rateTable: string
 }>()
 
 const chartOptions = {
     responsive: true,
-    maintainAspectRatio: false    
+    maintainAspectRatio: false
 }
 
 const chartData = ref({
